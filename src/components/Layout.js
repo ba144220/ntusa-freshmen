@@ -18,17 +18,16 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 // @material-ui/icons
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 
 // config
 import { PageConfig } from '../config/PageConfig'
 import { useHistory, useLocation } from 'react-router';
+import { Avatar } from '@material-ui/core';
 
 
 
-const drawerWidth = 240;
+const DRAWER_WIDTH = 240;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,14 +35,14 @@ const useStyles = makeStyles((theme) => ({
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
-        width: drawerWidth,
+        width: DRAWER_WIDTH,
         flexShrink: 0,
         },
     },
     appBar: {
         [theme.breakpoints.up('sm')]: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
+        width: `calc(100% - ${DRAWER_WIDTH}px)`,
+        marginLeft: DRAWER_WIDTH,
         },
         backgroundColor: theme.palette.secondary.main
     },
@@ -56,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
         drawerPaper: {
-            width: drawerWidth,
+            width: DRAWER_WIDTH,
     },
     toolbarTitle:{
         fontSize: theme.typography.fontSize*1.6,
@@ -65,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
+        backgroundColor: theme.palette.action.hover,
     },
     test: {
         backgroundColor: 'green',
@@ -72,6 +72,11 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerTitle: {
         padding: theme.spacing(2),
+        display: 'flex',
+    },
+    drawerTitleInner: {
+        marginLeft: theme.spacing(2.0),
+        marginTop: theme.spacing(0.5),
     },
     active: {
         backgroundColor: theme.palette.action.selected,
@@ -95,15 +100,18 @@ function ResponsiveDrawer(props) {
   const drawer_items = (
     <div>
         <Typography variant='h5' className={classes.drawerTitle}>
-            NTU FRESHMEN
+            <Avatar src='https://scontent-tpe1-1.xx.fbcdn.net/v/t1.18169-9/1016427_620811881273317_1280617223_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=GO-MuwQ2UP8AX-L5VLS&_nc_ht=scontent-tpe1-1.xx&oh=9f404021953b791b5d6456b086d86220&oe=60E0E4CA'/>
+            <Typography variant='h5' className={classes.drawerTitleInner}>
+                FRESHMEN
+            </Typography>
         </Typography>
-        {/* <Divider /> */}
+        <Divider variant='middle'/> 
         <List>
             {PageConfig.map(item => (
                 <ListItem 
                     button 
                     key={item.title} 
-                    className = {location.pathname == item.url ? classes.active : null}
+                    className = {item.url.includes(location.pathname)  ? classes.active : null}
                     onClick = {() => history.push(item.url)}
                 >
                     <ListItemIcon>{item.icon}</ListItemIcon>
@@ -138,7 +146,7 @@ function ResponsiveDrawer(props) {
                     <MenuIcon />
                 </IconButton>
                 <Typography noWrap className={classes.toolbarTitle}>
-                    {PageConfig.filter(item => location.pathname===item.url)[0].title}
+                    {PageConfig.filter(item => location.pathname.includes(item.url))[0].title}
                 </Typography>
             </Toolbar>
         </AppBar>
@@ -183,9 +191,8 @@ function ResponsiveDrawer(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        
-        {PageConfig.filter(item => location.pathname===item.url)[0].jsx}
-      </main>
+                {PageConfig.filter(item => location.pathname.includes(item.url))[0].jsx}
+        </main>
     </div>
   );
 }

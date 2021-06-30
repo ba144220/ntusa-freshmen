@@ -32,12 +32,12 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Layout>
-          <Switch>
+          {/* <Switch>
             
             <Route path="/test">
               <div>fdsf</div>
             </Route>
-          </Switch>
+          </Switch> */}
         </Layout>
       </Router>
     </ThemeProvider>

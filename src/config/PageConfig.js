@@ -62,7 +62,7 @@ const PageConfig = [
         title: 'Organizations', 
         url: '/organizations', 
         icon:<PeopleIcon color="secondary"/>, 
-        jsx:(<div>Organizations</div>)
+        jsx:(<Organizations></Organizations>)
     },
     {
         title: 'Contacts', 

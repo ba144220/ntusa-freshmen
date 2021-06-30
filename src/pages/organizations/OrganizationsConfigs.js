@@ -13,7 +13,7 @@ const OrganizationsConfigs = [
                 description: null,
                 facebook: 'https://www.facebook.com/NTUSA',
                 instagram: 'https://www.instagram.com/ntusa_33rd/',
-                line: null,
+                line: 'https://line.me/R/ti/p/%40ntusa',
                 website: 'https://ntusa.ntu.edu.tw/',
             },
             {
@@ -27,6 +27,7 @@ const OrganizationsConfigs = [
                 line: null,
                 website: null,
             },
+            
             {
                 title: 'NTUSA Culture',
                 chinese: '臺大學生會文化部',
@@ -49,6 +50,7 @@ const OrganizationsConfigs = [
                 line: null,
                 website: null,
             },
+            
             {
                 title: 'NTUSA Student Welfare',
                 chinese: '臺大學生會學權部',
@@ -67,6 +69,17 @@ const OrganizationsConfigs = [
                 image: 'https://i.imgur.com/VThzKVY.png',
                 description: null,
                 facebook: 'https://www.facebook.com/NTUVote',
+                instagram: null,
+                line: null,
+                website: null,
+            },
+            {
+                title: 'NTUSA Public Relations',
+                chinese: '臺大學生會公關部',
+                avatar: 'NTUSA',
+                image: null,
+                description: null,
+                facebook: null,
                 instagram: null,
                 line: null,
                 website: null,
